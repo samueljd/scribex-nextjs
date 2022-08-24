@@ -1,73 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-#content {
-  @apply rounded-sm overflow-hidden;
-}
-/* .section {
-  @apply border-2 border-black text-sm rounded-sm overflow-hidden;
-} */
-
-/* .section > .section-heading {
-  @apply hidden;
-} */
-
-.editor {
-  @apply my-2;
-}
-
-.editor *[contenteditable="true"]:focus {
-  @apply bg-primary-50 outline-none rounded-sm;
-}
-
-p.paragraph {
-  @apply mx-3 py-1;
-}
-
-.mark.chapter {
-  @apply text-xl font-bold mr-2 mt-10 break-before-column before:block;
-}
-
-.mark.verses {
-  @apply text-xs mr-1 text-primary font-semibold;
-}
-
-.major-title,
-.major-secondary-heading {
-  @apply text-primary;
-}
-
-.graft {
-  @apply text-primary text-sm align-super;
-}
-
-.perf .graft:before {
-  @apply cursor-pointer font-semibold;
-  content: " ‡";
-}
-
-/* html {
-  background-color: lightgray;
-}
-
-.App {
-  font-family: sans-serif;
-}
-
-#offset {
-  min-height: 4em;
-}
-
 .sectionHeading {
   text-align: center;
   width: 100%;
   font-weight: 700;
   text-transform: capitalize;
-}
-
-.MuiAccordionSummary-root.Mui-expanded {
-  border-bottom: 1px solid darkgray;
 }
 
 .perf div.graft:before {
@@ -145,14 +80,14 @@ p.paragraph {
 }
 
 .perf .introduction,
-.perf div[sequencetype="introduction"] .block {
+.perf div[type="introduction"] .paragraph {
   font-size: 1.1rem;
   margin: 0.5em 0em;
   text-align: unset;
 }
 
 .perf .heading,
-.perf div[sequencetype="heading"] .block {
+.perf div[type="heading"] .paragraph {
   font-size: 1.2rem;
   font-weight: 700;
   text-align: center;
@@ -160,7 +95,7 @@ p.paragraph {
 }
 
 .perf .title,
-.perf div[sequencetype="title"] .block {
+.perf div[type="title"] .paragraph {
   font-weight: 700;
   font-size: 1.5rem;
   text-align: center;
@@ -171,18 +106,18 @@ p.paragraph {
   font-size: 3rem;
 }
 
-.perf .heading.s {
+.perf .heading .s {
   font-size: 1.2rem;
 }
 
-.perf .heading.r {
+.perf .heading .r {
   font-size: 1.1rem;
   font-weight: 600;
   padding: 0.25em 0.2em;
 }
 
 .perf #sequence .heading#sequence,
-.perf #sequence .heading#sequence .block {
+.perf #sequence .heading#sequence .paragraph {
   padding: 0;
 }
 
@@ -193,4 +128,4 @@ p.paragraph {
 
 .perf .PerfEditorWrapper {
   margin: 0.1em;
-} */
+}

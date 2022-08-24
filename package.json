@@ -8,8 +8,25 @@
     "start": "next start"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@xelah/type-perf-html": "file:.yalc/@xelah/type-perf-html",
+    "epitelete-perf-html": "^0.2.4",
+    "lodash.isequal": "^4.5.0",
     "next": "12.2.5",
+    "phosphor-react": "^1.4.1",
+    "prop-types": "15.8.1",
+    "proskomma-react-hooks": "2.4.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-scripts": "5.0.1",
+    "use-deep-compare": "1.1.0",
+    "zustand": "^4.1.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.2",
+    "autoprefixer": "^10.4.8",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8",
+    "typescript": "4.1.3"
   }
 }

@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "@xelah/type-perf-html": {
+      "version": "1.0.0-beta.8",
+      "signature": "a60a4fe9e9f7da71fe275b21536ab86a",
+      "file": true
+    }
+  }
+}
