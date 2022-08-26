@@ -15,7 +15,7 @@ export default function usePerf({
   verbose,
   htmlMap,
 }) {
-  // const [isSaving, startSaving] = useTransition();
+  const [isSaving, startSaving] = useTransition();
   const [htmlPerf, setHtmlPerf] = useState();
 
   const epiteletePerfHtml = useDeepCompareMemo(
@@ -46,8 +46,8 @@ export default function usePerf({
 
     if (!isEqual(htmlPerf, _htmlPerf)) setHtmlPerf(_htmlPerf);
 
-    // startSaving(async () => {
-     const startSaving = async () => {
+    startSaving(async () => {
+      console.log({isSaving})
       const newHtmlPerf = await epiteletePerfHtml?.writeHtml(
         bookCode,
         sequenceId,
@@ -57,8 +57,7 @@ export default function usePerf({
         console.log({ info: "Saved sequenceId", bookCode, sequenceId });
 
       if (!isEqual(htmlPerf, newHtmlPerf)) setHtmlPerf(newHtmlPerf);
-    };
-    startSaving();
+    });
   },
     [htmlPerf, bookCode]
   );
@@ -83,7 +82,7 @@ export default function usePerf({
     htmlPerf,
     canUndo,
     canRedo,
-    // isSaving,
+    isSaving,
   };
 
   const actions = {

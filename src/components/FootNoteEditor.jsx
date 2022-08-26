@@ -1,16 +1,15 @@
 import { useCallback, useContext } from "react";
-// import { Skeleton, Stack } from "@mui/material";
 
 import { ScribexContext } from "../hooks/ScribexContext";
 import useLifecycleLog from "../hooks/useLifecycleLog";
 
-import { HtmlPerfEditor } from "@xelah/type-perf-html";
+import { HtmlPerfEditor } from '@xelah/type-perf-html';
 
-export default function Editor() {
+export default function FootNoteEditor() {
 	const {
 		state: {
 			sequenceIds,
-			isSaving,
+			// isSaving,
 			isLoading,
 			htmlPerf,
 			sectionable,
@@ -18,9 +17,11 @@ export default function Editor() {
 			editable,
 			preview,
 			verbose,
+			graftSequenceId,
 		},
 		actions: { addSequenceId, saveHtmlPerf, setGraftSequenceId },
 	} = useContext(ScribexContext);
+
 	const sequenceId = sequenceIds.at(-1);
 
 	const style = isLoading || !sequenceId ? { cursor: 'progress' } : {};
@@ -31,9 +32,7 @@ export default function Editor() {
 			const { tagName } = element;
 			const isInline = tagName === 'SPAN';
 			// if (_sequenceId && !isInline) addSequenceId(_sequenceId);
-			_sequenceId
-				? setGraftSequenceId(_sequenceId)
-				: setGraftSequenceId(null);
+			if (_sequenceId) setGraftSequenceId(_sequenceId);
 		},
 	};
 
@@ -41,6 +40,7 @@ export default function Editor() {
 		htmlPerf: htmlPerf,
 		onHtmlPerf: saveHtmlPerf,
 		sequenceIds,
+		sequenceId,
 		addSequenceId,
 		options: {
 			sectionable,
@@ -53,10 +53,20 @@ export default function Editor() {
 		handlers,
 	};
 
+	const graftProps = {
+		...props,
+		sequenceIds: [graftSequenceId],
+	};
+
+	const graftSequenceEditor = htmlPerf && (
+		<>
+			<HtmlPerfEditor {...graftProps} />
+		</>
+	);
+
 	return (
 		<div className='editor' style={style}>
-			{!sequenceId && <p>loading</p>}
-			{sequenceId && <HtmlPerfEditor {...props} />}
+			{graftSequenceId ? graftSequenceEditor : ''}
 		</div>
 	);
 }

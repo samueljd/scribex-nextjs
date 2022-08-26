@@ -6,19 +6,12 @@ import Buttons from "./Buttons";
 import { ScribexContext } from "../hooks/ScribexContext";
 
 import { LockClosedIcon, BookmarkIcon } from "@heroicons/react/outline";
-import FootNoteWrapper from "./FootNoteWrapper";
+import FootNoteEditor from "./FootNoteEditor";
 
 export default function Scribex() {
   const {
-    state: { bookName, footNoteSelected },
-    actions: { setFootNoteSelected },
+    state: { bookName },
   } = useContext(ScribexContext);
-
-  useLifecycleLog(Scribex);
-  const [footNoteSeqId, setFootNoteSeqId] = useState();
-  useEffect(() => {
-    footNoteSeqId ? setFootNoteSelected(true) : setFootNoteSelected(false);
-  }, [footNoteSeqId]);
 
   return (
     <div className="layout">
@@ -32,11 +25,7 @@ export default function Scribex() {
               Footnotes
             </div>
           </div>
-          {footNoteSelected ? (
-            <FootNoteWrapper footNoteSeqId={footNoteSeqId} />
-          ) : (
-            ""
-          )}
+          <FootNoteEditor />
         </div>
         <div className="bg-white border-b-2 border-secondary rounded-md shadow h-editor overflow-hidden">
           <div className="flex items-center justify-between bg-secondary">
@@ -119,7 +108,7 @@ export default function Scribex() {
             </div>
           </div>
           <div className="border-l-2 border-r-2 border-secondary pb-16 max-w-none overflow-y-auto h-full no-scrollbars">
-            <Editor setFootNote={(content) => setFootNoteSeqId(content)} />
+            <Editor />
           </div>
         </div>
       </div>

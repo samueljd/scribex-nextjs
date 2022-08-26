@@ -20,8 +20,8 @@ const _documents = [
   },
 ];
 
-export default function useScribexState(props) {
-  const { state, actions } = useScribexReducer(props);
+export default function useScribexState() {
+  const { state, actions } = useScribexReducer();
   const { verbose } = state;
 
   const { proskomma, stateId, newStateId } = useProskomma({ verbose });
@@ -31,6 +31,7 @@ export default function useScribexState(props) {
     newStateId,
     documents: _documents,
   });
+  console.log({proskomma},{stateId},{newStateId})
 
   const { catalog } = useCatalog({ proskomma, stateId, verbose });
 
